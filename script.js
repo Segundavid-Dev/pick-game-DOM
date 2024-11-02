@@ -8,8 +8,34 @@
 const score0Element = document.querySelector("#score--0");
 const score1Element = document.querySelector("#score--1");
 const diceElement = document.querySelector(".dice");
+const btnNew = document.querySelector(".btn--new");
+const btnRoll = document.querySelector(".btn--roll");
+const btnHold = document.querySelector(".btn--hold");
+const current0Element = document.getElementById("current--0");
+const current1Element = document.getElementById("current--1");
 
 // starting condtions
 score0Element.textContent = 0;
 score1Element.textContent = 0;
 diceElement.classList.add("hidden");
+
+let currentScore = 0;
+// rolling dice functioality
+btnRoll.addEventListener("click", function () {
+  // Generating a random dice
+  const dice = Math.ceil(Math.random() * 6);
+
+  // Display the dice
+  diceElement.classList.remove("hidden");
+  diceElement.src = `/Images/dice-${dice}.png`;
+
+  // Check for rolled 1
+  if (dice !== 1) {
+    // Add dice to the current score
+    currentScore += dice;
+    // display the currentscore on the current player
+    current0Element.textContent = currentScore; //CHANGE LATER
+  } else {
+    // Switch to next player
+  }
+});
